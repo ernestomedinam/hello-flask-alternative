@@ -1,0 +1,32 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+psycopg2-binary = "*"
+flask-migrate = "*"
+flask-jwt-extended = "*"
+flask-dotenv = "*"
+flask-cors = "*"
+flask-apispec = "*"
+flask-restful = "*"
+flask-sqlalchemy = "*"
+sqlalchemy = "*"
+dateutils = "*"
+
+[dev-packages]
+pytest = "*"
+pytest-mock = "*"
+
+[requires]
+python_version = "3.11"
+python_full_version = "3.11.4"
+
+[scripts]
+init = "flask db init"
+migrate = "flask db migrate"
+upgrade = "flask db upgrade"
+start = "python run.py"
+test = "pytest -v"

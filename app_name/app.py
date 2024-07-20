@@ -1,8 +1,8 @@
 import os
 from flask import Flask, jsonify
-from flask_cors import CORS
 
 from config import app_config
+from flask_cors import CORS
 
 from app_name.db import db, migrate
 from app_name.api import rest_api, docs, spec, jwt
@@ -19,6 +19,7 @@ def create_app(config_name="development"):
 
     with app.app_context():
         import app_name.base.routes
+        import app_name.chicken.models
 
         rest_api.init_app(app)
 

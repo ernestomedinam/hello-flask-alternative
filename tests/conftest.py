@@ -1,6 +1,5 @@
-import os
 import pytest
-from datetime import datetime
+import os
 from flask import current_app, Flask
 from app_name.app import create_app
 from flask_sqlalchemy import SQLAlchemy

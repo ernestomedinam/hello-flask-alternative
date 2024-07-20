@@ -4,6 +4,7 @@ import string
 from distutils.util import strtobool
 from datetime import datetime
 from dateutil import parser
+from functools import reduce
 
 from flask import make_response, jsonify
 
@@ -172,3 +173,21 @@ def normalize_date(date: datetime | str) -> datetime:
         microsecond=0
     )
     return normalized_date
+
+def snake_to_camel_case(snake_str: str) -> str:
+    words = snake_str.lower().split("_")
+    camel_str = f"{words.pop(0)}"
+    for word in words:
+        camel_str += f"{word.capitalize()}"
+    return camel_str
+
+def snake_to_lowercase(snake_str:str) -> str:
+    words = snake_str.lower().split("_")
+    return reduce(
+        lambda string, word: f"{string}{word}",
+        words
+    )
+    # camel_str = f"{words.pop(0)}"
+    # for word in words:
+    #     camel_str += f"{word}"
+    # return camel_str

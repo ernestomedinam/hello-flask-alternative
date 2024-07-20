@@ -1,9 +1,11 @@
 import pytest
 import os
+from typing import List
 from flask import current_app, Flask
-from app_name.app import create_app
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Engine, Connection, RootTransaction
+from app_name.app import create_app
+from app_name.chicken.models.chicken import Chicken
 
 # helper Resource class
 class APIResource():
@@ -73,3 +75,15 @@ def client(app, db_session):
     with app.test_client() as _client:
         api_client = APIResource(_client, "api")
         yield api_client
+
+# fixture to create chickens for resources tests
+@pytest.fixture(scope="function")
+def chicken_factory(app: Flask):
+    def generator(
+            number_of_chickens: int=1
+        ) -> List[Chicken]:
+        from app_name.chicken.data.mock_chickens import mock_chickens
+        with app.app_context() as context:
+            chickens = mock_chickens(number_of_chickens)
+            return chickens
+    yield generator

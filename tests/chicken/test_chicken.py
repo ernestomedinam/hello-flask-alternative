@@ -21,5 +21,8 @@ def test_chicken_has_three_random_traits(db_session):
         random personality traits that have a
         specific order.
     """
-    pass
-
+    some_chicken = Chicken.create(
+        name="some",
+        color=CSSColor.BEIGE
+    )
+    assert len(some_chicken.traits) == 3

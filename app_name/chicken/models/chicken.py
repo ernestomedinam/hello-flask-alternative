@@ -1,10 +1,12 @@
-from typing import List
+from random import randint
+from typing import List, Self
 from sqlalchemy.orm import Mapped
 from app_name.base.models.base import BaseModel
 from app_name.db import db
 from app_name.base.models.api_exception import APIException
 from .css_color import CSSColor
 from .chicken_trait import ChickenTrait
+from .personality_trait import PersonalityTrait
 
 class Chicken(BaseModel):
     """
@@ -35,8 +37,25 @@ class Chicken(BaseModel):
         return data
 
     @classmethod
-    def create(cls, **kwargs):
+    def create(cls, **kwargs) -> Self:
         chicken_instance = super().create(
             **cls._validate_data(**kwargs)
         )
+        for time in range(1,4):
+            chicken_instance.add_trait()
         return chicken_instance
+
+    def add_trait(self) -> None:
+        if len(self.traits) == 3:
+            raise APIException(
+                "a chicken can't have more than 3 personality traits 😐",
+                400
+            )
+        all_traits = PersonalityTrait.list_names()
+        random_trait = all_traits[randint(0, len(all_traits) -1)]
+        ChickenTrait.create(
+            order=len(self.traits) + 1,
+            chicken_id=self.id,
+            trait=PersonalityTrait[random_trait]
+        )
+        return

@@ -19,7 +19,7 @@ def create_app(config_name="development"):
 
     with app.app_context():
         import app_name.base.routes
-        import app_name.chicken.models
+        import app_name.chicken.routes
 
         rest_api.init_app(app)
 

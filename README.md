@@ -7,16 +7,17 @@ lightly opinionated base template for flask api projects with use case examples 
 - make sure you have a running psql instance & update variables in .env file
 - create a database on your psql instance named like the variable in .env file
 - run `$pipenv run upgrade` to bring your db up to date with your code
+- run `$pipenv run start-chicken-barn` to populate your barn with a couple of chickens
 - start dev server with `$pipenv run start`
+- check swagger api docs at `/swagger-iu`
 - test with `$pipenv run test`
 - code away
 
 > need to adds...
 
 ## pending 🤪
-- build tests
-- create models for test
-- create resources for test
+- update readme
+- update according to changes on reactJS * reactTS boilerplates
 
 ## notes 📝
 > built with python 3.11.4

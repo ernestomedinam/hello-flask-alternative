@@ -20,6 +20,7 @@ def create_app(config_name="development"):
     with app.app_context():
         import app_name.base.routes
         import app_name.chicken.routes
+        from app_name.chicken.commands import start_chicken_barn
 
         rest_api.init_app(app)
 

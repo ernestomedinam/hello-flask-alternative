@@ -1,7 +1,7 @@
 from flask_restful import Resource
 from flask_apispec import marshal_with, use_kwargs, doc
 from flask_apispec.views import MethodResource
-from app_name.chicken.schemas.chickens import ChickenResponseSchema, ChickenPostSchema
+from app_name.chicken.schemas.chicken import ChickenResponseSchema, ChickenPostSchema
 from app_name.chicken.models.chicken import Chicken
 from app_name.chicken.models.css_color import CSSColor
 
@@ -13,7 +13,7 @@ class Chickens(MethodResource, Resource):
     )
     @marshal_with(ChickenResponseSchema(many=True), code=200)
     def get(self, **kwargs):
-        chickens = Chicken.query.all()
+        chickens = Chicken.find()
         return chickens, 200
 
     @doc(

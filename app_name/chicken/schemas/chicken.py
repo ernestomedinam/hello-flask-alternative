@@ -1,5 +1,5 @@
 from marshmallow import Schema, fields, validate, pre_load, post_dump
-from .chicken_traits import ChickenTraitResponseSchema
+from .chicken_trait import ChickenTraitResponseSchema
 from app_name.chicken.models.css_color import CSSColor
 
 class ChickenResponseSchema(Schema):

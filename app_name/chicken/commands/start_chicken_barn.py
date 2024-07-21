@@ -1,6 +1,6 @@
 from random import randint
 from flask import current_app as app
-from app_name.chicken.data import mock_chickens
+from app_name.chicken.data.mock_chickens import mock_chickens
 from app_name.chicken.models.chicken import Chicken
 
 @app.cli.command("start-chicken-barn")

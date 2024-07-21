@@ -1,5 +1,6 @@
 from typing import Self
 from app_name.base.models.base import BaseEnum
+from app_name.base.models.api_exception import APIException
 from app_name.utils.thc import snake_to_lowercase
 
 class CSSColor(BaseEnum):
@@ -149,3 +150,11 @@ class CSSColor(BaseEnum):
         for value in values:
             if color_name == value[0]:
                 return cls(value) 
+        raise APIException(
+            "invalid color name 😢",
+            400
+        )
+
+    @classmethod
+    def list_color_names(cls):
+        return [color.value[0] for color in cls]

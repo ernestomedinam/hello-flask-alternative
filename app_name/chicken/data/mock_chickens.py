@@ -16,7 +16,7 @@ def mock_chickens(
         colors = CSSColor.list_names()
         new_chicken = Chicken.create(
             name=f"test chicken number {time}",
-            color=colors[randint(0, len(colors) + 1)]
+            color=colors[randint(0, len(colors))]
         )
         chickens.append(new_chicken)
     return chickens

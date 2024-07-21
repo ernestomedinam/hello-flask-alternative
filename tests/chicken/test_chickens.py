@@ -1,3 +1,5 @@
+import pytest 
+
 def test_get_all_chickens(client, chicken_factory):
     """
         tests chickens resource for get method
@@ -21,3 +23,26 @@ def test_get_all_chickens(client, chicken_factory):
     )
     assert response.status_code == 200
     assert len(response.json) == len(chickens)
+
+def test_create_a_chicken(client):
+    """
+        tests a chicken can be created using
+        post method on chickens resource.
+        request body includes name and color: {
+            "name": str,
+            "color": str
+        }
+    """
+    response = client.fetch(
+        method="post",
+        path="chickens",
+        json={
+            "name": "test chicken",
+            "color": "yellowgreen"
+        }
+    )
+    assert response.status_code == 201
+    assert response.json["name"] == "test chicken"
+    assert len(response.json["color"]) == 2
+    assert response.json["color"][0] == "yellowgreen"
+    assert "id" in response.json

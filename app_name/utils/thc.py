@@ -191,3 +191,12 @@ def snake_to_lowercase(snake_str:str) -> str:
     # for word in words:
     #     camel_str += f"{word}"
     # return camel_str
+
+def parse_constant_to_human(CONSTANT_STR: str) -> str:
+    words: list[str] = CONSTANT_STR.lower().split("_")
+    return "".join(
+        list(map(
+            lambda word: f"{word.capitalize()}",
+            words
+        ))
+    )

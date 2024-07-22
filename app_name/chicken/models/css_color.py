@@ -1,7 +1,7 @@
 from typing import Self
 from app_name.base.models.base import BaseEnum
 from app_name.base.models.api_exception import APIException
-from app_name.utils.thc import snake_to_lowercase
+from app_name.utils.thc import snake_to_lowercase, parse_constant_to_human
 
 class CSSColor(BaseEnum):
     ALICE_BLUE = ("aliceblue", "#f0f8ff")
@@ -158,3 +158,14 @@ class CSSColor(BaseEnum):
     @classmethod
     def list_color_names(cls):
         return [color.value[0] for color in cls]
+
+    @classmethod
+    def list_human_color_names(cls):
+        return [parse_constant_to_human(color.name) for color in cls]
+    
+    @classmethod
+    def build_colors_list(cls):
+        return [dict(
+            label=parse_constant_to_human(color.name),
+            value=color.value[0]
+        ) for color in cls]

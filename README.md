@@ -24,6 +24,7 @@ lightly opinionated base template for flask api projects with use case examples 
 > need a new endpoint? just add corresponding schema and resource files, and then make sure to register the resource on the current module's routes.py file
 
 ## pending 🤪
+- update readme to add instructions to change app_name variable and folder name
 - add files and base deployment configuration
 
 ## notes 📝

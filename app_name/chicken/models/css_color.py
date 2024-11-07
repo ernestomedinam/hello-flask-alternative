@@ -167,5 +167,6 @@ class CSSColor(BaseEnum):
     def build_colors_list(cls):
         return [dict(
             label=parse_constant_to_human(color.name),
-            value=color.value[0]
+            value=color.value[0],
+            rgb=color.value[1]
         ) for color in cls]

@@ -16,3 +16,13 @@ def test_get_all_valid_css_colors(client):
         lambda colorObject: colorObject["value"],
         response.json
     ))
+
+def test_get_rgb_in_response(client):
+    """
+        tests colors objects include rgba.
+    """
+    response = client.fetch(
+        method="get",
+        path="css-colors"
+    )
+    assert "rgb" in response.json[0]

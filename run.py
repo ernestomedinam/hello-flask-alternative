@@ -29,7 +29,7 @@ if __name__ == "__main__":
     app = create_app()
     print(f">>> ✅ starting app & setting up api to listen on port {app_port}")
     app.run(
-        host="127.0.0.1", 
+        host="0.0.0.0", 
         port=app_port, 
         debug=False if environment == "production" else True
     )

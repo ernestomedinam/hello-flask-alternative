@@ -1,7 +1,9 @@
 FROM python:3.11.4-alpine
 
 # create nonroot user to eventually run container
-RUN adduser --no-create-home --system e-shell
+# update <username> with desired user name, e.g.: e-shell
+# needs to match one in .env file...
+RUN adduser --no-create-home --system <username>
 WORKDIR /app
 RUN apk update
 RUN apk add build-base mariadb-dev mariadb-client postgresql-dev libffi-dev

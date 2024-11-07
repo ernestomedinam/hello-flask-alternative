@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+    api:
+        environment:
+            - FLASK_ENV=production
+        ports:
+            - $PORT:$PRODUCTION_PORT

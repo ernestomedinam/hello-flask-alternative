@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+    api:
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        container_name: app_name-api
+        environment:
+            - CHOKIDAR_USEPOLLING="true"
+            - PYTHONUNBUFFERED=1
+        env_file:
+            - ./.env
+        volumes:
+            - ./:/app
+        working_dir: /app
+        entrypoint: [ "/bin/sh", "./wait_for_production_db.sh" ]
+
+volumes:
+    dbdata:

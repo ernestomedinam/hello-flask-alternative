@@ -1,7 +1,16 @@
 # hello flask + psql! 🤓
 lightly opinionated base template for flask api projects with use case examples for module based folder structure, OOP + SQLAlchemy (ORM) & self documented resource management under REST standards; built for 4GeeksAcademy community & open for all.
 
+recently added docker support!
+
 ## how to use 😎
+
+### 🐳 if docker: 
+- make sure you have docker engine up & running
+- update `.env` file variables
+- follow docker instructions (pending), basically `$ docker compose build` & `$ docker compose up` on success
+
+### 🐍 no docker: 
 - check python's version is greater or equal than the version in Pipfile
 - install project dependencies based on boilerplate's lock file with `$pipenv sync`
 - make sure you have a running psql instance & update variables in `.env` file
@@ -25,7 +34,7 @@ lightly opinionated base template for flask api projects with use case examples 
 
 ## pending 🤪
 - update readme to add instructions to change app_name variable and folder name
-- add files and base deployment configuration
+- update docs on how to use this docker implementation
 
 ## notes 📝
 > built with python 3.11.4
